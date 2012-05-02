@@ -1,0 +1,25 @@
+{
+    "name": "esync",
+    "description": "Dirt simple solution to async event listeners",
+    "version": "0.0.1",
+    "author": "Stéphan Kochen <stephan@angrybytes.com>",
+    "keywords": ["events", "EventEmitter", "async"],
+    "license": "MIT",
+
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Two-Screen/esync.git"
+    },
+
+    "engines": {
+        "node": ">=0.4.0"
+    },
+    "devDependencies": {
+        "tap": "0.2"
+    },
+
+    "main": "index.js",
+    "scripts": {
+        "test": "tap test.js"
+    }
+}
