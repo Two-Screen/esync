@@ -44,7 +44,7 @@ The beaty of this is that it's optional; listeners can simply ignore the
 parameter.  Additionally, it follows the ‘error first’ callback parameter
 convention seen in Node.js and [async].
 
-This all feels a lot more natural in [CoffeeScript], FWIW:
+This all feels a lot more natural in [CoffeeScript], for what it's worth:
 
     esync = require 'esync'
     { EventEmitter } = require 'events'
