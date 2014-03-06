@@ -53,15 +53,17 @@ test('async functions', function(t) {
 });
 
 test('errors', function(t) {
-    t.plan(1);
+    t.plan(3);
 
     var wait = esync();
 
     wait(function(cb) {
+        t.pass('task 1 is called');
         cb("error 1");
     });
 
     wait(function(cb) {
+        t.pass('task 2 is called');
         cb("error 2");
     });
 

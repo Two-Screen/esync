@@ -10,10 +10,8 @@ module.exports = function() {
 
         // The task callback function.
         return fn(function(err) {
-            if (err)
-                error = err;
-            else
-                pending--;
+            pending--;
+            if (err) error = err;
             flush();
         });
     }
