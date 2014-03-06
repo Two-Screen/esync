@@ -28,7 +28,7 @@ test('async functions', function(t) {
 });
 
 test('errors', function(t) {
-    t.plan(2);
+    t.plan(1);
     var wait = esync();
     wait(function(cb) {
         cb("error 1");

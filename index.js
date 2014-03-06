@@ -1,22 +1,19 @@
 // Export a single function.
 module.exports = function() {
-    var total = 0;
-    var completed = 0;
-    var errors = [];
+    var pending = 0;
+    var error = null;
     var callback = null;
 
     // The task queueing function.
     function wait(fn) {
-        total++;
+        pending++;
 
         // The task callback function.
         return fn(function(err) {
-            if (err) {
-                errors.push(err);
-            }
-            else {
-                completed++;
-            }
+            if (err)
+                error = err;
+            else
+                pending--;
             flush();
         });
     }
@@ -29,14 +26,9 @@ module.exports = function() {
 
     // Helper that flushes errors and completion.
     function flush() {
-        if (callback) {
-            var err;
-            while (err = errors.shift()) {
-                callback(err);
-            }
-            if (completed === total) {
-                callback(null);
-            }
+        if (callback && (error !== null || pending === 0)) {
+            callback(error);
+            callback = null;
         }
     }
 
