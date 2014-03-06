@@ -16,6 +16,16 @@ test('test callbacks', function(t) {
     });
 });
 
+test('test empty', function(t) {
+    t.plan(1);
+
+    var wait = esync();
+
+    wait.after(function(err) {
+        t.notOk(err, 'after is called');
+    });
+});
+
 test('async functions', function(t) {
     t.plan(4);
 
