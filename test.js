@@ -16,7 +16,7 @@ test('test callbacks', function(t) {
     });
 });
 
-test('test empty', function(t) {
+test('test empty esync', function(t) {
     t.plan(1);
 
     var wait = esync();
@@ -26,7 +26,7 @@ test('test empty', function(t) {
     });
 });
 
-test('async functions', function(t) {
+test('test async tasks', function(t) {
     t.plan(4);
 
     var i = 0;
@@ -52,7 +52,7 @@ test('async functions', function(t) {
     });
 });
 
-test('errors', function(t) {
+test('test errors', function(t) {
     t.plan(3);
 
     var wait = esync();
