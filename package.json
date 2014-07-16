@@ -1,7 +1,7 @@
 {
     "name": "esync",
     "description": "Dirt simple solution to async event listeners",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "author": "Stéphan Kochen <stephan@angrybytes.com>",
     "keywords": ["events", "EventEmitter", "async"],
     "license": "MIT",
