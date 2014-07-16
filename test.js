@@ -71,3 +71,21 @@ test('test errors', function(t) {
         t.ok(err, 'after got an error');
     });
 });
+
+test('test callback returning variant', function(t) {
+    t.plan(2);
+
+    var i = 0;
+    var wait = esync();
+
+    var cb = wait();
+    setTimeout(function() {
+        i = 1;
+        cb();
+    }, 200);
+
+    wait.after(function(err) {
+        t.ok(i === 1, 'after is called after callback');
+        t.notOk(err, 'after has no error');
+    });
+});
