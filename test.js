@@ -2,7 +2,7 @@ var test = require('tap').test;
 var esync = require('./');
 
 test('test callbacks', function(t) {
-    t.plan(2);
+    t.plan(3);
 
     var wait = esync();
 
@@ -12,7 +12,11 @@ test('test callbacks', function(t) {
     });
 
     wait.after(function(err) {
-        t.notOk(err, 'after is called');
+        t.notOk(err, 'after callback is called');
+    });
+
+    wait.end(function(err) {
+        t.notOk(err, 'end callback is called');
     });
 });
 
@@ -21,8 +25,8 @@ test('test empty esync', function(t) {
 
     var wait = esync();
 
-    wait.after(function(err) {
-        t.notOk(err, 'after is called');
+    wait.end(function(err) {
+        t.notOk(err, 'callback is called');
     });
 });
 
@@ -46,9 +50,9 @@ test('test async tasks', function(t) {
         setTimeout(cb, 400);
     });
 
-    wait.after(function(err) {
-        t.ok(i === 2, 'after is called last');
-        t.notOk(err, 'after has no error');
+    wait.end(function(err) {
+        t.ok(i === 2, 'callback is called last');
+        t.notOk(err, 'callback has no error');
     });
 });
 
@@ -67,8 +71,8 @@ test('test errors', function(t) {
         cb("error 2");
     });
 
-    wait.after(function(err) {
-        t.ok(err, 'after got an error');
+    wait.end(function(err) {
+        t.ok(err, 'callback got an error');
     });
 });
 
@@ -84,8 +88,8 @@ test('test callback returning variant', function(t) {
         cb();
     }, 200);
 
-    wait.after(function(err) {
-        t.ok(i === 1, 'after is called after callback');
-        t.notOk(err, 'after has no error');
+    wait.end(function(err) {
+        t.ok(i === 1, 'callback is called');
+        t.notOk(err, 'callback has no error');
     });
 });
