@@ -42,21 +42,4 @@ a way to delay execution.
 
 The beaty of this is that it's optional; listeners can simply ignore the
 parameter.  Additionally, it follows the ‘error first’ callback parameter
-convention seen in Node.js and [async].
-
-This all feels a lot more natural in [CoffeeScript], for what it's worth:
-
-    esync = require 'esync'
-    { EventEmitter } = require 'events'
-
-    emitter = new EventEmitter()
-
-    emitter.on 'foo', (arg1, arg2, wait) -> wait (cb) ->
-        setTimeout cb, 1000
-
-    emitter.emit 'foo', 3, 5, wait = esync()
-    wait.after (err) ->
-        # ...
-
- [async]: https://github.com/caolan/async/
- [CoffeeScript]: http://coffeescript.org/
+convention seen in Node.js.
